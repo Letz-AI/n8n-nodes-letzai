@@ -44,7 +44,10 @@ You will authenticate by passing the API key in the credentials apiKey input.
 
 - To use this node, search for "Create Image LetzAI" in the n8n nodes and add it to your workflow. This node will generate an image based on the provided prompt.
   ![prompt Image](promptImage.png)
-- After generating the image, use a **Wait node** in your workflow to wait for 2-4 minutes. This is necessary to give LetzAI some time to process the image generation.
+- After generating the image, use a **Wait node** in your workflow:
+  - **Turbo Mode**: Wait for **1 minute**.
+  - **Other Modes**: Wait for **2-4 minutes**.  
+    This step ensures that LetzAI has enough time to process the image generation.
 - Once the wait time is over, add the **Get Image LetzAI** node to your workflow. In the "Image ID" field, use the ID from the "Create Image LetzAI" node’s output. This will fetch the generated image based on the ID.
   ![get image id](getImage.png)
 
