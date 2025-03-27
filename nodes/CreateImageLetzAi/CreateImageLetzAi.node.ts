@@ -3,12 +3,13 @@ import {
 	INodeOutputConfiguration,
 	INodeType,
 	INodeTypeDescription,
+	NodeConnectionType,
 } from 'n8n-workflow';
 
-export class LetzAICreateImage implements INodeType {
+export class CreateImageLetzAi implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Create Image LetzAI',
-		name: 'CreateImageLetzAI',
+		name: 'createImageLetzAi',
 		icon: 'file:logo.svg',
 		group: ['transform'],
 		version: 1,
@@ -17,21 +18,12 @@ export class LetzAICreateImage implements INodeType {
 		defaults: {
 			name: 'Create Image LetzAI default',
 		},
-		inputs: [
-			{
-				name: 'main',
-				type: 'main',
-			} as INodeInputConfiguration,
-		],
-		outputs: [
-			{
-				name: 'main',
-				type: 'main',
-			} as INodeOutputConfiguration,
-		],
+		inputs: ['main'] as (NodeConnectionType | INodeInputConfiguration)[],
+		outputs: ['main'] as (NodeConnectionType | INodeOutputConfiguration)[],
+
 		credentials: [
 			{
-				name: 'LetzAIApi',
+				name: 'letzAIApi',
 				required: true,
 			},
 		],
@@ -101,7 +93,7 @@ export class LetzAICreateImage implements INodeType {
 				placeholder: 'Min: 1, Default: 2, Max: 5',
 				required: true,
 				description:
-					'Defines how many steps the generation should take. Higher is slower, but generally better quality (Min: 1, Default: 2, Max: 5)',
+					'Defines how many steps the generation should take. Higher is slower, but generally better quality (Min: 1, Default: 2, Max: 5).',
 				routing: {
 					request: {
 						body: {
@@ -134,7 +126,7 @@ export class LetzAICreateImage implements INodeType {
 				default: true,
 				placeholder: '',
 				required: true,
-				description: 'Defines whether to set a watermark or not. Default is true',
+				description: 'Whether to set a watermark or not. Default is true.',
 				routing: {
 					request: {
 						body: {
@@ -173,7 +165,7 @@ export class LetzAICreateImage implements INodeType {
 					{
 						name: 'Sigma',
 						value: 'sigma',
-						description: 'Sigma is faster and great for close ups.',
+						description: 'Sigma is faster and great for close ups',
 					},
 					{
 						name: 'Turbo',
@@ -183,7 +175,7 @@ export class LetzAICreateImage implements INodeType {
 				],
 				default: 'default',
 				description:
-					'	Select one of the different modes that offer different generation settings. Allowed values: "default", "sigma", "turbo" Default is slow but high quality. Sigma is faster and great for close ups. Turbo is fastest, but lower quality.',
+					'Select one of the different modes that offer different generation settings. Allowed values: "default", "sigma", "turbo" Default is slow but high quality. Sigma is faster and great for close ups. Turbo is fastest, but lower quality.',
 				routing: {
 					request: {
 						body: {

@@ -3,12 +3,13 @@ import {
 	INodeOutputConfiguration,
 	INodeType,
 	INodeTypeDescription,
+	NodeConnectionType,
 } from 'n8n-workflow';
 
-export class LetzAIGetImage implements INodeType {
+export class GetImageLetzAi implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Get Image LetzAI',
-		name: 'GetImageLetzAI',
+		name: 'getImageLetzAi',
 		icon: 'file:logo.svg',
 		group: ['transform'],
 		version: 1,
@@ -17,21 +18,12 @@ export class LetzAIGetImage implements INodeType {
 		defaults: {
 			name: 'Get Image LetzAI default',
 		},
-		inputs: [
-			{
-				name: 'main',
-				type: 'main',
-			} as INodeInputConfiguration,
-		],
-		outputs: [
-			{
-				name: 'main',
-				type: 'main',
-			} as INodeOutputConfiguration,
-		],
+		inputs: ['main'] as (NodeConnectionType | INodeInputConfiguration)[],
+		outputs: ['main'] as (NodeConnectionType | INodeOutputConfiguration)[],
+
 		credentials: [
 			{
-				name: 'LetzAIApi',
+				name: 'letzAIApi',
 				required: true,
 			},
 		],
@@ -47,16 +39,16 @@ export class LetzAIGetImage implements INodeType {
 		properties: [
 			{
 				displayName: 'Image ID',
-				name: 'imageId',
+				name: 'id',
 				type: 'string',
 				default: '',
 				placeholder: 'ID of the image',
 				required: true,
-				description: 'Get the image details with the id image',
+				description: 'Get the image details with the ID image',
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/{{$parameter["imageId"]}}',
+						url: '=/{{$parameter["id"]}}',
 					},
 				},
 			},
