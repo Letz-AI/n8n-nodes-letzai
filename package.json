@@ -11,6 +11,9 @@
 		"name": "LetzAI",
 		"email": "contact@letz.ai"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Letz-AI/n8n-nodes-letzai.git"
