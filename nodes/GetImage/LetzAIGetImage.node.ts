@@ -9,7 +9,7 @@ export class LetzAIGetImage implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Get Image LetzAI',
 		name: 'GetImageLetzAI',
-		icon: 'file:icon.png',
+		icon: 'file:logo.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: 'Get Image with LetzAI',

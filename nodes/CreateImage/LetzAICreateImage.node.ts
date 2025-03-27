@@ -9,7 +9,7 @@ export class LetzAICreateImage implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Create Image LetzAI',
 		name: 'CreateImageLetzAI',
-		icon: 'file:icon.png',
+		icon: 'file:logo.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: 'Create Image with LetzAI',
